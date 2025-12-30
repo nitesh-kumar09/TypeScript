@@ -1,40 +1,83 @@
-// Defining types or alias
+/**
+ * Type Alias Definitions
+ * ----------------------
+ * Type aliases are used to give a meaningful name
+ * to a primitive or complex type.
+ *
+ * Purpose:
+ * - Improves readability
+ * - Makes code more expressive
+ * - Helps maintain consistency across the project
+ */
 
-// Defining types or custom types
-
-// defining types
+// A custom type alias for numeric IDs
+// Useful when IDs are used in many places
 type ID = number;
 
-// use above types as: -
-const userId : ID = 123;
+// Using the ID type alias
+// Makes it clear that this number represents a user ID
+const userId: ID = 123;
 
-// Defining types
-type fruits = string;
+/**
+ * Type alias for fruits
+ * --------------------
+ * Even though it is a string, naming it gives semantic meaning.
+ * This helps future readers understand the intent.
+ */
+type Fruit = string;
 
-// use above types as: -
-const apple : fruits = 'Apple'
+// Using the Fruit type alias
+const apple: Fruit = "Apple";
 
-
-// Make sure defining  type { not } in format of string that is in double quote ""  or single quote '' 
+/**
+ * User Type Definition
+ * --------------------
+ * Describes the structure of a User object.
+ *
+ * Notes:
+ * - `address` is optional (marked with ?)
+ * - Optional fields may or may not be present
+ *
+ * Why optional?
+ * - Not every user may have an address
+ * - Prevents forcing unnecessary data
+ */
 type User = {
-    name:string;
-    age:number;
-    address?:string;  // here ? is used for optional 
-}
+    name: string;       // User's full name
+    age: number;        // User's age
+    address?: string;   // Optional address field
+};
 
-// used above types
-const user:User = {
-    name:'Nitesh Singh',
-    age:24,
-}
+/**
+ * User object example
+ * -------------------
+ * Follows the User type definition.
+ * Address is optional, so it can be omitted safely.
+ */
+const user: User = {
+    name: "Nitesh Singh",
+    age: 24,
+};
 
-// use above types in function
-
-// function with type User and it's return type is also User
-function login(userData: User):User{
+/**
+ * Login function
+ * --------------
+ * Accepts a User object and returns a User object.
+ *
+ * Why type the function?
+ * - Ensures correct data is passed in
+ * - Ensures correct data is returned
+ * - Prevents accidental misuse of the function
+ */
+function login(userData: User): User {
     return userData;
 }
 
-
-console.log(login({name:"Satish Singh",age:20}))
-
+// Function usage example
+// TypeScript enforces that the object matches User type
+console.log(
+    login({
+        name: "Satish Singh",
+        age: 20,
+    })
+);
